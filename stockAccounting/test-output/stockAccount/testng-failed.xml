@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [stockAccount]">
+  <test name="Regression test(failed)">
+    <classes>
+      <class name="com.stockAccounting.Testcase.tesngsuppliercreation">
+        <methods>
+          <include name="StockAcc_Logout"/>
+          <include name="StockAcc_Login"/>
+          <include name="stockAcc_supplier"/>
+          <include name="StockAcc_launch"/>
+          <include name="StockAcc_close"/>
+        </methods>
+      </class> <!-- com.stockAccounting.Testcase.tesngsuppliercreation -->
+      <class name="com.stockAccounting.Testcase.testngUOMcreation">
+        <methods>
+          <include name="Stock_Unitcategory"/>
+        </methods>
+      </class> <!-- com.stockAccounting.Testcase.testngUOMcreation -->
+    </classes>
+  </test> <!-- Regression test(failed) -->
+</suite> <!-- Failed suite [stockAccount] -->

@@ -1,0 +1,39 @@
+package com.stockAccounting.master;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.annotations.BeforeSuite;
+
+public class testngStockAccMaster {
+	public static WebDriver driver;
+	public static Properties prop;
+	public static FileInputStream fis;
+	public static String URL="http://webapp.qedgetech.com";
+	@BeforeSuite
+	public void StockAcc_launch() throws IOException{
+		 fis=new FileInputStream("D:\\\\workspace\\\\stockAccounting\\\\src\\\\com\\\\stockAccounting\\\\Proerties\\\\testngproperties.properties");
+		 prop=new Properties();
+		 prop.load(fis);
+		 String br=prop.getProperty("browser");
+		 
+		 if(br.equalsIgnoreCase("firefox")){
+			 driver=new FirefoxDriver();
+		 }
+		 else if(br.equalsIgnoreCase("chrome")){
+			 System.setProperty("webdriver.chrome.driver", "D:\\workspace\\stockAccounting\\src\\com\\stockAccounting\\jar\\chromedriver.exe");
+			 driver=new ChromeDriver();
+		 }
+		 else if(br.equalsIgnoreCase("InternetExplorer")){
+			 System.setProperty("webdriver.ie.driver", "D:\\workspace\\stockAccounting\\src\\com\\stockAccounting\\jar\\IEDriverServer.exe");
+			 driver=new InternetExplorerDriver();
+		 }
+		
+	}
+}

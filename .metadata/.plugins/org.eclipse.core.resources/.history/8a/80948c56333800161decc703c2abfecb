@@ -1,0 +1,117 @@
+##accounting property file#####
+
+
+#id property of the username field
+username=username
+
+#id property of the password field
+password=password
+
+#id property of the login field
+login=btnsubmit
+
+#id property of the resetbutton
+reset=btnreset
+
+#################locator for logout functionality#########
+
+#id property of logout field
+
+logout=logout
+
+#xpath property of confirmation field
+confirmationbutton=html/body/div[17]/div[2]/div/div[4]/div[2]/button[1]
+
+
+######################## locator for  supplierModule ############
+
+#locator for Suppliers link
+supplierbutton=Suppliers
+#locator for Addbutton link
+Addbutton=.//*[@id='ewContentColumn']/div[3]/div[1]/div[1]/div[1]/div/a/span
+#locator for Supplier Name field 
+Supplier_Name =x_Supplier_Name
+#locator for Address field
+Address =x_Address
+#locator for City field
+City =x_City
+#locator for Country field
+Country =x_Country
+#locator for Contact_Person field
+Contact_Person=x_Contact_Person
+#locator for Phone_Number  field
+Phone_Number =x_Phone_Number
+#locator for Email  field
+Email =x__Email
+#locator for Mobile_Number field
+Mobile_Number=x_Mobile_Number
+#locator for Notes field
+Notes=x_Notes
+#locator for Add_button  button
+button=btnAction
+
+###############   Element locator value for stock categories functionality under stock item module ####################
+
+# locator for Stock item link
+Stock_item_link=.//*[@id='mi_a_stock_items']/a
+# locator for Stock categories link
+categories_link=Stock Categories
+# locator for Add button button
+Add_button=.//*[@id='ewContentColumn']/div[3]/div[1]/div[1]/div[1]/div/a
+# locator for  Category Name field
+Category_Name=x_Category_Name
+# locator for Add button button
+Add=btnAction
+
+
+###############   Element locator value for unit measurement functionality under Stock item module ####################
+
+# locator for Stock item link
+Stock_item_link=.//*[@id='mi_a_stock_items']/a
+# locator for Unit of measurement link
+Unit_of_measurement=Unit of Measurement
+# locator for Add button button
+UOM_Add_button=.//*[@id='ewContentColumn']/div[3]/div[1]/div[1]/div[1]/div/a
+# locator for UOM id field
+UOM_id=x_UOM_ID
+# location for UOM description
+UOM_description=x_UOM_Description
+# locator for Add button button
+uoi_Add=btnAction
+
+#####################  locator for stock item creation ###########################
+
+# locator for Stock item link
+Stock_item_link=Stock Items
+
+#locator for Add button(+)
++_button=.//*[@id='ewContentColumn']/div[3]/div[1]/div[1]/div[1]/div/a/span
+
+#locator for categorydropdown
+category_dropdown=x_Category
+
+#locator for suppliernumber_dropdowm
+suppliernumber_dropdowm=x_Supplier_Number
+
+#locator for stockname
+stockname=x_Stock_Name
+
+#locator for UOM_Dropdowm
+UOM_Dropdowm=x_Unit_Of_Measurement
+
+#locator for Puchasing_Price
+Puchasing_Price=x_Purchasing_Price
+
+#locator for selling_Price
+selling_Price=x_Selling_Price
+
+#locator for Notes
+selling_Notes=x_Notes
+
+#locator for Stockcreation_button
+Stockcreation_button=btnAction
+
+
+
+############### Browser Launch#################
+browser=firefox

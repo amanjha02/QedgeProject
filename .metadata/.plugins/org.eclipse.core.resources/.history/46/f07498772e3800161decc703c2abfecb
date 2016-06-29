@@ -1,0 +1,28 @@
+package com.stockAccounting.Testcase;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.server.browserlaunchers.Sleeper;
+import org.testng.Assert;
+
+import com.stockAccounting.master.testngStockAccMaster;
+
+public class testngUOMcreation extends testngStockAccMaster{
+	public String Stock_Unitcategory(String UM_ID ,String Unit_Description){
+		expval="Add succeeded";
+		WebElement element=driver.findElement(By.xpath(pr.getProperty("Stock_item_link")));
+		Actions ac=new Actions(driver);
+		ac.moveToElement(element).build().perform();
+		driver.findElement(By.linkText(pr.getProperty("Unit_of_measurement"))).click();
+		driver.findElement(By.xpath(pr.getProperty("UOM_Add_button"))).click();
+		driver.findElement(By.id(pr.getProperty("UOM_id"))).sendKeys(UM_ID);
+		driver.findElement(By.id(pr.getProperty("UOM_description"))).sendKeys(Unit_Description);
+		driver.findElement(By.id(pr.getProperty("uoi_Add"))).click();
+		driver.findElement(By.xpath("//*[@class='ajs-footer']/div[2]/button[1]")).click();
+		actval=driver.findElement(By.xpath("html/body/div[3]/div[2]/div/div[3]/div/div")).getText();
+		Sleeper.sleepTightInSeconds(9);
+		driver.findElement(By.xpath("//*[@class='ajs-footer']/div[2]/button[1]")).click();
+		 Assert.assertEquals(actval, expval,"Test case failed");
+}
+}

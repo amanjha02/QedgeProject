@@ -1,0 +1,86 @@
+package com.stockAccounting.master;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.testng.Assert;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class testngStockAccMaster extends StockMaster
+{
+	public static WebDriver driver;
+	public static Properties prop;
+	public static FileInputStream fis;
+	public static String URL="http://webapp.qedgetech.com";
+	public static String expvalue,actvalue,res;
+	public static StockMaster sm;
+
+	@BeforeSuite
+	public void StockAcc_launch() throws IOException{
+		/*expvalue="btnsubmit";
+		 fis=new FileInputStream("D:\\\\workspace\\\\stockAccounting\\\\src\\\\com\\\\stockAccounting\\\\Proerties\\\\testngproperties.properties");
+		 prop=new Properties();
+		 prop.load(fis);
+		 String br=prop.getProperty("browser");
+		 
+		 if(br.equalsIgnoreCase("firefox")){
+			 driver=new FirefoxDriver();
+		 }
+		 else if(br.equalsIgnoreCase("chrome")){
+			 System.setProperty("webdriver.chrome.driver", "D:\\workspace\\stockAccounting\\src\\com\\stockAccounting\\jar\\chromedriver.exe");
+			 driver=new ChromeDriver();
+		 }
+		 else if(br.equalsIgnoreCase("InternetExplorer")){
+			 System.setProperty("webdriver.ie.driver", "D:\\workspace\\stockAccounting\\src\\com\\stockAccounting\\jar\\IEDriverServer.exe");
+			 driver=new InternetExplorerDriver();
+		 }
+		 driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		 driver.get(URL);
+		 driver.manage().window().maximize();	
+		 
+		 actvalue=driver.findElement(By.id("btnsubmit")).getAttribute("id");*/
+		
+		expvalue="Pass";
+		actvalue=sm.stockAcc_launch(URL);
+		 Assert.assertEquals(actvalue, expvalue, "test case passed");
+		
+	}
+	@AfterSuite
+	public void StockAcc_close(){
+		driver.close();
+	}
+	
+	@BeforeTest
+	public void StockAcc_Login() {
+		expvalue="PASS";
+		actvalue=sm.stockAcc_Login("admin","master");
+		Assert.assertEquals(actvalue.toUpperCase(),expvalue.toUpperCase(),"Login TestCase Failed");
+		
+	}
+	@AfterTest
+	public void StockAcc_Logout(){
+		expvalue="PASS";
+		
+		actvalue=sm.Stock_Logout();
+		Assert.assertEquals(expvalue.toUpperCase(),actvalue.toUpperCase(),"Login TestCase Failed");
+		
+	}
+	
+	@Test
+	 public void StockAcc_SupplierCreation(){
+		sm.stockAcc_supplier("aman", "madhapur", "hyderabad", "india", "VAMSI", "5455454546", "ABC@GMAIL.COM","145454", "Value");
+	}
+	
+}

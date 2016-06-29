@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite name="stockAccount">
+	<test name="Regression test">
+		<classes>
+			<class name="com.stockAccounting.Testcase.testngstockcategoriescreation" />
+			<class name="com.stockAccounting.Testcase.testngUOMcreation" />
+			<class name="com.stockAccounting.Testcase.testngstockcategoriescreation" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

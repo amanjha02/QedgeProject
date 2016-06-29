@@ -1,0 +1,30 @@
+package com.stockAccounting.Testcase;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.server.browserlaunchers.Sleeper;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+
+import com.stockAccounting.Example.stockMaster;
+import com.stockAccounting.master.testngStockAccMaster;
+
+public class testngstockcategoriescreation extends testngStockAccMaster {
+@Test
+public void Stockcategory_creation(String Categories){
+	expval="Add succeeded";
+    WebElement element=driver.findElement(By.xpath(pr.getProperty("Stock_item_link")));
+    ac=new Actions(driver);
+	ac.moveToElement(element).build().perform();
+	driver.findElement(By.linkText(pr.getProperty("categories_link"))).click();
+	driver.findElement(By.xpath(pr.getProperty("Add_button"))).click();
+	driver.findElement(By.id(pr.getProperty("Category_Name"))).sendKeys(Categories);
+	driver.findElement(By.id(pr.getProperty("Add"))).click();
+	Sleeper.sleepTightInSeconds(9);
+	driver.findElement(By.xpath("//*[@class='ajs-modal']/div[1]/div[4]/div[2]/button[1]")).click();
+	String actval=driver.findElement(By.xpath("html/body/div[17]/div[2]/div/div[3]/div/div")).getText();
+	driver.findElement(By.xpath("//*[@class='ajs-footer']/div[2]/button[1]")).click();
+	 Assert.assertEquals(actval, expval,"Test case failed");
+}
+}

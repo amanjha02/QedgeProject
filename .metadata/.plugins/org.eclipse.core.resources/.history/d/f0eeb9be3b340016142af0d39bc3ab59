@@ -1,0 +1,26 @@
+package com.stockAccounting.Testcase;
+
+import java.io.IOException;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+
+import com.stockAccounting.master.StockMaster;
+
+public class StockItemCreation {
+	public WebDriver driver;	
+
+public static void main(String[] args) throws IOException {
+	StockMaster sm=new StockMaster();
+	StockItemCreation SItem=new StockItemCreation();
+	sm.stockAcc_launch(sm.url);
+	sm.stockAcc_Login("admin","master");	
+	SItem.Stock_Item_creation();
+	
+}
+
+public void  Stock_Item_creation(){
+	
+	driver.findElement(By.xpath(".//*[@id='mi_a_stock_items']/a")).click();
+}
+}

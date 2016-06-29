@@ -1,0 +1,80 @@
+package com.stockAccounting.Testcase;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.testng.annotations.Test;
+
+import com.stockAccounting.master.StockMaster;
+
+public class keywordDrivenScript {
+	public static FileInputStream fis;
+	public static String excelpath;
+	@Test
+	public void keywordScript() throws IOException{
+		String res=null;
+		StockMaster sm=new StockMaster();
+		fis=new FileInputStream(excelpath);
+		XSSFWorkbook wb=new XSSFWorkbook(fis);
+		XSSFSheet ws1=wb.getSheet("TestCase");
+		XSSFSheet ws2=wb.getSheet("TestSteps");
+		XSSFSheet ws3=wb.getSheet("Testdata");
+		int TcRc=ws1.getLastRowNum();
+		int TsRc=ws2.getLastRowNum();
+		int Tsdata=ws3.getLastRowNum();
+		
+		for (int i = 1; i <= TcRc; i++) {
+			String tcexe=ws1.getRow(i).getCell(0).getStringCellValue();
+			for (int j = 1; j <= TsRc; j++) {
+				String tsid=ws2.getRow(i).getCell(0).getStringCellValue();
+				if(tcexe.equalsIgnoreCase(tsid)){
+					String key= ws2.getRow(j).getCell(3).getStringCellValue();
+					switch (key) {
+					case "sLanch":
+						res=sm.stockAcc_launch(sm.url);
+						break;
+
+					case "sLogin":	
+						res=sm.stockAcc_Login("admin", "master");
+						break;
+					case "sLogout":	
+						res=sm.Stock_Logout()
+						sm.driverclose();
+						break;
+					case "sSupplier":
+						String supname=ws3.getRow(1).getCell(0).getStringCellValue();
+						String sadd=ws3.getRow(1).getCell(1).getStringCellValue();
+						String scity=ws3.getRow(1).getCell(2).getStringCellValue();
+						String scountry=ws3.getRow(1).getCell(3).getStringCellValue();
+						String scontperson=ws3.getRow(1).getCell(4).getStringCellValue();
+						String Sphnnumber=ws3.getRow(1).getCell(5).getStringCellValue();
+						String semail=ws3.getRow(1).getCell(6).getStringCellValue();
+						String smbnum=ws3.getRow(1).getCell(7).getStringCellValue();
+						String snotes=ws3.getRow(1).getCell(8).getStringCellValue();
+						res=sm.stockAcc_supplier(supname, sadd, scity, scountry, scontperson, Sphnnumber, semail, smbnum, snotes);
+						break;
+						break;
+					case "sCat":
+						String catname=ws3.getRow(1).getCell(9).getStringCellValue();
+						res=sm.stockAcc_stockcatCreation(catname);
+						break;
+					case "sUom":
+						String Uid=ws3.getRow(1).getCell(10).getStringCellValue();
+						String Udesc=ws3.getRow(1).getCell(11).getStringCellValue();
+						res=sm.stockAcc_UnitofMcreation(Uid, Udesc);
+						break;
+						
+					default:
+						System.out.println("Select a proper keyword");
+						break;
+					}
+				}
+			}
+		}
+		
+	}
+
+}
